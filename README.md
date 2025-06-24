@@ -1,7 +1,9 @@
-## 🔹 Strings
+### 🔹 Strings
 
-| # | Problem | Solution | Notes |
-|---|---------|----------|-------|
-| 1 | [28. Find First Occurrence](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/) | [Code](Strings/28-find-first-occurrence.cpp) | Used `.substr()` and handled edge cases |
-| 2 | [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | [Code](Strings/3-longest-substring-without-repeating.cpp) | Sliding window + hash map for O(n) time |
+| #  | Problem                                                           | Solution | Notes                                      |
+|----|-------------------------------------------------------------------|----------|--------------------------------------------|
+| 1  | [28. Find First Occurrence](link-to-leetcode-or-question)        | [Code](link-to-your-code-file) | Used `.substr()` and handled edge cases   |
+| 2  | [3. Longest Substring Without Repeating Characters](link)        | [Code](link) | Sliding window + hash map for O(n) time   |
+| 3  | [58. Length of Last Word](link-to-leetcode-or-question)          | [Code](link-to-your-code-file) | Used `trim()` and `split()` to isolate last word |
+
 
