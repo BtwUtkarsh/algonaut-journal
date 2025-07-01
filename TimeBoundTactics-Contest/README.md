@@ -1,6 +1,6 @@
 ##  Problem: Partition String
 
-LeetCode: [2405. Optimal Partition of String](https://leetcode.com/problems/optimal-partition-of-string/)  
+LeetCode: [[2405. Optimal Partition of String](https://leetcode.com/problems/optimal-partition-of-string/)](https://leetcode.com/problems/partition-string/)  
 Category: Greedy, HashSet  
 Difficulty: Medium  
 **Status: Solved  
@@ -30,22 +30,25 @@ Each substring should be a contiguous block of characters from the original stri
 
 ###  Code (C++)
 
-```cpp
+
 class Solution {
 public:
-    int partitionString(string s) {
-        unordered_set<char> seen;
-        int count = 0;
+    vector<string> partitionString(string s) {
+        unordered_set<string> seen;
+        vector<string> result;
+        string segment = "";
 
-        for (char ch : s) {
-            if (seen.count(ch)) {
-                count++;
-                seen.clear();
+        for (int i = 0; i < s.size(); ++i) {
+            segment += s[i];
+
+            if (!seen.count(segment)) {
+                result.push_back(segment); 
+                seen.insert(segment);      
+                segment = "";              
             }
-            seen.insert(ch);
         }
 
-        return count + 1;
+        return result;
     }
 };
 
