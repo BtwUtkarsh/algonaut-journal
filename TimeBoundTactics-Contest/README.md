@@ -1,6 +1,6 @@
 ##  Problem: Partition String
 
-LeetCode: [[2405. Optimal Partition of String](https://leetcode.com/problems/optimal-partition-of-string/)](https://leetcode.com/problems/partition-string/)  
+LeetCode: [3597-Partition String](https://leetcode.com/problems/partition-string/)  
 Category: Greedy, HashSet  
 Difficulty: Medium  
 **Status: Solved  
