@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string Base(int number,int base,const string&charset){
+       if(number==0)return "0";
+        string ans;
+        while(number > 0){
+            ans = charset[number % base]+ans;
+            number /= base;
+        }
+        return ans;
+    }
+   
+    string concatHex36(int n) {
+  int num1 = n*n;
+        int num2 = n*n*n;
+        string hexadecimal = Base(num1,16,"0123456789ABCDEF");
+        string hexatrigesimal = Base(num2,36,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    return hexadecimal +  hexatrigesimal;
+        }
+};
