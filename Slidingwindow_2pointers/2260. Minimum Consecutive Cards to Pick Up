@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int minimumCardPickup(vector<int>& cards) {
+        int l = 0, r = 0;
+        int minLen = INT_MAX;
+        unordered_map<int, int> mpp;
+
+        while (r < cards.size()) {
+            if (mpp.find(cards[r]) != mpp.end()) {
+                if (mpp[cards[r]] >= l) {
+                    // Calculate before updating l
+                    minLen = min(minLen, r - mpp[cards[r]] + 1);
+                    l = mpp[cards[r]] + 1;
+                }
+            }
+            mpp[cards[r]] = r;
+            r++;
+        }
+
+        return (minLen == INT_MAX) ? -1 : minLen;
+    }
+};
