@@ -1,0 +1,37 @@
+class Solution {
+public:
+    bool validCode(const string& code){
+        if(code.empty())return false;
+       
+       for (char ch : code){
+           if(!isalnum(ch) && ch != '_'){
+               return false;
+           }
+       }
+        return true;
+    }
+    vector<string> validateCoupons(vector<string>& code, vector<string>& businessLine, vector<bool>& isActive) {
+        unordered_map<string,int> ordered = {
+            {"electronics", 0},
+        {"grocery", 1},
+        {"pharmacy", 2},
+        {"restaurant", 3},
+        };
+        vector<pair<string,string>> valid;
+         for(int i = 0;i < code.size();++i){
+             if(validCode(code[i]) && ordered.count(businessLine[i]) && isActive[i]){
+                 valid.push_back({businessLine[i],code[i]});
+             }
+         }
+         sort(valid.begin(),valid.end(),[&](const pair<string,string>&a,const pair<string,string>&b){
+             if(ordered[a.first] == ordered[b.first])
+                 return a.second < b.second;
+             return ordered[a.first] < ordered[b.first];
+         });
+         vector<string>ans;
+         for(auto&p : valid){
+             ans.push_back(p.second);
+         }
+         return ans;
+    }
+};
