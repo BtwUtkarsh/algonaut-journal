@@ -1,0 +1,54 @@
+class Solution {
+public:
+    vector<int> findSubstring(string s, vector<string>& words) {
+        vector<int> result;
+        if (words.empty() || s.empty()) return result;
+
+        int wordLen = words[0].size();
+        int wordCount = words.size();
+        int totalLen = wordLen * wordCount;
+
+        unordered_map<string, int> wordFreq;
+        for (string& word : words) {
+            wordFreq[word]++;
+        }
+
+        // Try all starting points within a word-length block
+        for (int i = 0; i < wordLen; i++) {
+            int left = i, right = i;
+            unordered_map<string, int> currFreq;
+            int count = 0;
+
+            while (right + wordLen <= s.size()) {
+                string word = s.substr(right, wordLen);
+                right += wordLen;
+
+                if (wordFreq.count(word)) {
+                    currFreq[word]++;
+                    count++;
+
+                    // If this word occurs more than it should, shrink window from the left
+                    while (currFreq[word] > wordFreq[word]) {
+                        string leftWord = s.substr(left, wordLen);
+                        currFreq[leftWord]--;
+                        left += wordLen;
+                        count--;
+                    }
+
+                    // If all words matched exactly
+                    if (count == wordCount) {
+                        result.push_back(left);
+                    }
+
+                } else {
+                    // Word not in original list — reset everything
+                    currFreq.clear();
+                    count = 0;
+                    left = right;
+                }
+            }
+        }
+
+        return result;
+    }
+};
